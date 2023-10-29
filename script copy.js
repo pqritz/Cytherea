@@ -86,7 +86,6 @@ function calcDaysUntil() {
 }
 
 window.onload = function () {
-  updateIfAnniversary()
   updateTime();
   updateImages();
 }
@@ -128,12 +127,4 @@ function getRandomNumberInInterval(min, max) {
   console.log(max)
   console.log(random)
   return random;
-}
-
-function updateIfAnniversary() {
-  anniversary = "2024-10-29"; //"2024-11-1";
-  today = new Date()
-  if(today.getDate() == new Date(anniversary).getDate()) {
-    window.location.href = 'surprise/surprise.html'
-  }
 }
