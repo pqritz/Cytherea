@@ -131,7 +131,7 @@ function getRandomNumberInInterval(min, max) {
 }
 
 function updateIfAnniversary() {
-  anniversary = "2024-10-29"; //"2024-11-1";
+  anniversary = "2024-11-1"; //"2024-11-1";
   today = new Date()
   if(today.getDate() == new Date(anniversary).getDate()) {
     window.location.href = 'surprise/surprise.html'
