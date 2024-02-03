@@ -1,4 +1,5 @@
 const now = new Date();
+
 var nicsImages = [
   "assets/nics/0e28c349-6d34-46a8-9f60-4387893c624c.jpg",
   "assets/nics/1.jpg",
@@ -86,7 +87,8 @@ function calcDaysUntil() {
 }
 
 window.onload = function () {
-  updateIfAnniversary()
+  updateIfValentine();
+  updateIfAnniversary();
   updateTime();
   updateImages();
 }
@@ -135,5 +137,65 @@ function updateIfAnniversary() {
   today = new Date()
   if(today.getDate() == new Date(anniversary).getDate()) {
     window.location.href = 'surprise/surprise.html'
+  }
+}
+
+//VALENTINE CODE
+function onNoBtn(noBtn) {
+  const noBtnRect = noBtn.getBoundingClientRect();
+  const maxX = window.innerWidth - noBtnRect.width;
+  const maxY = window.innerHeight - noBtnRect.height;
+
+  const ranX = Math.floor(Math.random() * maxX);
+  const ranY = Math.floor(Math.random() * maxY);
+
+  noBtn.style.left = ranX + "px";
+  noBtn.style.top = ranY + "px";
+}
+
+function updateIfValentine() {
+  console.log("test");
+  valentine = "2024-2-14"
+  today = new Date()
+  if(today.getDate() != new Date(valentine).getDate()) {
+
+    document.body.style.overflowY = "initial";
+    document.body.style.background = "none";
+    document.body.style.backgroundColor = "whitesmoke";
+    document.querySelector(".normal-site").style.visibility = "collapse";
+    document.querySelector(".valentine-container").style.visibility = "visible";
+
+    const question = document.querySelector(".question");
+    const gif = document.querySelector(".gif");
+    const noBtn = document.querySelector(".no-btn");
+    const yesBtn = document.querySelector(".yes-btn");
+
+    
+    yesBtn.addEventListener("click", () => {
+      question.innerHTML = "Ich freue mich drauf ❤️💋";
+      gif.src = "https://raw.githubusercontent.com/DzarelDeveloper/Img/main/gif.webp";
+      
+      noBtn.style.transition = "0s";
+      noBtn.style.visibility = "collapse";
+      yesBtn.innerHTML = "Return to page";
+      yesBtn.style.width = "300px";
+      yesBtn.style.marginLeft = "0px";
+
+      yesBtn.addEventListener("click", () => {
+        document.body.style.overflowY = "initial";
+        document.body.style.background = "linear-gradient(to bottom right, #9cb8c9, #48729c)";
+        document.body.style.backgroundColor = "#91B2C7";
+        document.querySelector(".normal-site").style.visibility = "visible";
+        document.querySelector(".valentine-container").style.visibility = "collapse";
+      })
+    });
+    
+    noBtn.addEventListener("mouseover", () => {
+        onNoBtn(noBtn);
+    });
+    
+    noBtn.addEventListener("click", () => {
+        onNoBtn(noBtn);
+    });
   }
 }
