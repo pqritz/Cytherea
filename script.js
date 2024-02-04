@@ -86,12 +86,12 @@ function calcDaysUntil() {
   return diffInDays * -1 + 1;
 }
 
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", () => {
   updateIfValentine();
   updateIfAnniversary();
   updateTime();
   updateImages();
-}
+})
 
 function updateTime() {
   document.getElementById("counter").innerHTML = calcDaysUntil() + " Days";
