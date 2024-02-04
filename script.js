@@ -120,15 +120,11 @@ function getImageOfTheDay(path) {
 
 function getRandomNumberInInterval(min, max) {
   const currentDate = new Date();
-  console.log(currentDate.getDate())
   const seed = currentDate.toISOString().slice(0, 10); // Use the date as a seed
 
   const seedNumber = parseInt(seed.replace(/-/g, ""), 10);
   const random = (seedNumber % (max - min + 1)) + min;
 
-  console.log("--------------------")
-  console.log(max)
-  console.log(random)
   return random;
 }
 
@@ -154,11 +150,10 @@ function onNoBtn(noBtn) {
 }
 
 function updateIfValentine() {
-  console.log("test");
   valentine = "2024-2-14"
   today = new Date()
   if(today.getDate() != new Date(valentine).getDate()) {
-
+    window.scrollTo(0,0);
     document.body.style.overflowY = "initial";
     document.body.style.background = "none";
     document.body.style.backgroundColor = "whitesmoke";
